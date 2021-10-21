@@ -1,18 +1,25 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:test1/login.dart';
+import 'package:test1/main3.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return MaterialApp(
-      title: "My First App",
-      home: HomePage(),
+      title: 'First App',
+      // home: HomePage(),
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginPage(),
+        '/home': (context) => HomePage(),
+      },
     );
   }
 }
@@ -24,61 +31,27 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My First App"),
+        title: Text('First App'),
         actions: [
           IconButton(
             onPressed: () {
-              print("action button pressed!");
+              print('action button pressed !');
+              Navigator.pop(context);
             },
-            icon: Icon(Icons.navigate_next),
-          )
+            icon: Icon(Icons.navigate_before_rounded),
+          ),
         ],
       ),
-      body: Container(
-        margin: EdgeInsets.all(10),
-        child: Center(
-          child: Column(
-            children: [
-              Text(
-                "Question ?",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 28,
-                  color: Colors.blue,
-                ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    print("answer 1 pressed");
-                  },
-                  child: Text("Answer 1"),
-                ),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  print("answer 2 pressed");
-                },
-                child: Text("Answer 2"),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  print("answer 3 pressed");
-                },
-                child: Text("Answer 3"),
-              ),
-            ],
-          ),
-        ),
-      ),
+      body: Text('Hello Wahid !!!'),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print("Floating button pressed!");
+          print('Floating button pressed!');
         },
         child: Icon(Icons.favorite),
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Text('Drawer !'),
+      ),
     );
   }
 }
