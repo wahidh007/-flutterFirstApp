@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test1/login.dart';
-import 'package:test1/main3.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'First App',
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        fontFamily: GoogleFonts.lato().fontFamily,
+      ),
       // home: HomePage(),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
@@ -50,7 +54,32 @@ class HomePage extends StatelessWidget {
         child: Icon(Icons.favorite),
       ),
       drawer: Drawer(
-        child: Text('Drawer !'),
+        child: ListView(
+          children: [
+            DrawerHeader(
+              child: Text(
+                'Drawer Header',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                ),
+              ),
+              decoration: BoxDecoration(color: Colors.deepPurple),
+            ),
+            ListTile(
+              title: Text('Item 1'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Item 2'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
